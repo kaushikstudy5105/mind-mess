@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark navy theme for PharmaGuard */
+    --background: 222 47% 7%;
+    --foreground: 210 40% 95%;
+
+    --card: 222 40% 11%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 222 40% 11%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 186 100% 50%;
+    --primary-foreground: 222 47% 7%;
+
+    --secondary: 222 35% 17%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 222 35% 17%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 186 80% 40%;
+    --accent-foreground: 210 40% 95%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 35% 20%;
+    --input: 222 35% 17%;
+    --ring: 186 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Toxicity colors */
+    --tox-safe: 142 71% 45%;
+    --tox-low: 88 60% 48%;
+    --tox-moderate: 38 92% 55%;
+    --tox-high: 22 95% 55%;
+    --tox-critical: 0 72% 55%;
+
+    /* Gradient tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 7%) 0%, hsl(210 40% 12%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(222 40% 13%) 0%, hsl(222 40% 9%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(186 100% 50%) 0%, hsl(200 90% 45%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(186 100% 50% / 0.15) 0%, transparent 70%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 24px hsl(222 47% 4% / 0.6);
+    --shadow-glow: 0 0 30px hsl(186 100% 50% / 0.2);
+    --shadow-teal: 0 8px 32px hsl(186 100% 50% / 0.15);
+
+    --sidebar-background: 222 40% 9%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 186 100% 50%;
+    --sidebar-primary-foreground: 222 47% 7%;
+    --sidebar-accent: 222 35% 17%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 222 35% 18%;
+    --sidebar-ring: 186 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: hsl(var(--background));
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-teal {
+    box-shadow: var(--shadow-teal);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-glow {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2), inset 0 0 0 1px hsl(var(--primary) / 0.1);
+  }
+
+  .upload-zone {
+    border: 2px dashed hsl(var(--border));
+    transition: all 0.3s ease;
+  }
+
+  .upload-zone:hover,
+  .upload-zone.drag-over {
+    border-color: hsl(var(--primary) / 0.7);
+    background: hsl(var(--primary) / 0.04);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.1);
+  }
+
+  .upload-zone.has-file {
+    border-color: hsl(var(--tox-safe) / 0.7);
+    background: hsl(var(--tox-safe) / 0.04);
+  }
+
+  .upload-zone.has-error {
+    border-color: hsl(var(--destructive) / 0.7);
+    background: hsl(var(--destructive) / 0.04);
+  }
+
+  .tox-safe { color: hsl(var(--tox-safe)); }
+  .tox-low { color: hsl(var(--tox-low)); }
+  .tox-moderate { color: hsl(var(--tox-moderate)); }
+  .tox-high { color: hsl(var(--tox-high)); }
+  .tox-critical { color: hsl(var(--tox-critical)); }
+
+  .bg-tox-safe { background: hsl(var(--tox-safe)); }
+  .bg-tox-low { background: hsl(var(--tox-low)); }
+  .bg-tox-moderate { background: hsl(var(--tox-moderate)); }
+  .bg-tox-high { background: hsl(var(--tox-high)); }
+  .bg-tox-critical { background: hsl(var(--tox-critical)); }
+
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-teal);
+  }
+}

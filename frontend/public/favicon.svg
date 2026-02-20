@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d1425"/>
+      <stop offset="100%" stop-color="#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="16" y1="8" x2="48" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#0099cc"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#bg)" stroke="url(#shield)" stroke-width="2"/>
+  <!-- Shield outline -->
+  <path d="M32 10 L48 18 V34 C48 44 40 52 32 56 C24 52 16 44 16 34 V18 Z"
+        fill="none" stroke="url(#shield)" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- DNA helix -->
+  <path d="M26 22 C26 22 30 26 38 26 M26 30 C26 30 30 34 38 34 M26 38 C26 38 30 42 38 42"
+        stroke="#00d4ff" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
+  <!-- Helix backbone left -->
+  <path d="M26 20 V44" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <!-- Helix backbone right -->
+  <path d="M38 20 V44" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+</svg>
